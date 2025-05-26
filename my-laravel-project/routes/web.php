@@ -12,4 +12,5 @@ Route::get('/extgreeting', [ExtGreetingController::class, 'input'])->name('extgr
 Route::get('/extgreeting/input', [ExtGreetingController::class, 'input'])->name('extgreeting.input');
 Route::post('/extgreeting/greet', [ExtGreetingController::class, 'greet'])->name('extgreeting.greet');
 
-
+Route::get('/extgreeting/input-multiple', [ExtGreetingController::class, 'inputMultiple'])->name('extgreeting.input-multiple');
+Route::post('/extgreeting/greet-multiple', [ExtGreetingController::class, 'greetMultiple'])->name('extgreeting.greet-multiple');

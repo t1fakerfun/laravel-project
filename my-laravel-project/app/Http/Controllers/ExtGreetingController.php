@@ -32,4 +32,28 @@ class ExtGreetingController extends Controller
 
         return view('extgreeting.greet', ['message' => $message]);
     }
+    
+    public function inputMultiple()
+    {
+        return view('extgreeting.input_multiple');
+    }
+
+    public function greetMultiple(Request $request)
+    {
+        $names     = $request->input('names', []);
+        $types     = $request->input('types', []);
+        $tensions  = $request->input('tensions', []);
+
+        $messages = [];
+
+        for ($i = 0; $i < count($names); $i++) {
+            $name    = $names[$i] ?? 'ゲスト';
+            $type    = $types[$i] ?? 'human';
+            $tension = $tensions[$i] ?? 'average';
+
+            $messages[] = $this->greetingService->getMessage($name, $type, $tension);
+        }
+
+        return view('extgreeting.greet_multiple', ['messages' => $messages]);
+    }
 }
