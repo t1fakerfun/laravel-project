@@ -3,6 +3,10 @@
 namespace App\Providers;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Gate; // 追加
+use App\Models\User; // 追加
+use App\Models\Product; // 追加
+use App\Policies\ProductPolicy; // 追加
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,5 +25,6 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Paginator::useBootstrapFive();
+        Gate::policy(Product::class,ProductPolicy::class);
     }
 }
